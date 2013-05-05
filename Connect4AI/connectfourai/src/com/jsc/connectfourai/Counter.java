@@ -1,32 +1,46 @@
 package com.jsc.connectfourai;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 
+/**
+ * Represents a coloured counter
+ */
 public class Counter {
-	private static final Texture texture = new Texture(Gdx.files.internal("data/base_counter.png"));
-	
-    private int x, y;
-    private Color colour;
+    Color colour;
     private Sprite sprite;    
     
+    /**
+     * @param x x-coordinate of the counter on the screen
+     * @param y y-coordinate of the counter on the screen
+     * @param colour colour of the counter
+     */
     public Counter(int x, int y, Color colour) {
-    	this.x = x;
-    	this.y = y;
         this.colour = colour;
-        sprite = new Sprite(texture, 114, 114);
+        sprite = new Sprite(Config.COUNTER_TEXTURE, 
+        		Config.COUNTER_TEXTURE_WIDTH, Config.COUNTER_TEXTURE_HEIGHT);
         sprite.setPosition(x, y);
         sprite.setColor(colour);
     }
     
+    /**
+     * Renders the counter to a sprite batch
+     * @param batch sprite batch to render to
+     */
+    public void render(SpriteBatch batch) {
+    	sprite.draw(batch);
+    }
+    
+    /**
+     * Get the colour of the counter
+     * @return colour of the counter
+     */
     public Color getColour() {
         return colour;
     }
     
-    public void render(SpriteBatch batch) {
-    	sprite.draw(batch);
+    public String toString() {
+    	return colour.equals(Config.PLAYER_ONE_COLOUR) ? "X" : "O";
     }
 }

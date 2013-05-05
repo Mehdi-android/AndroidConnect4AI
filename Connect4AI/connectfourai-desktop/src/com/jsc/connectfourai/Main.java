@@ -8,9 +8,10 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "connectfourai";
 		cfg.useGL20 = false;
-		cfg.width = 870 + 20*2;
-		cfg.height = 748 + 20*2;
-		
+		cfg.width = 455;
+		cfg.height = 395;
+		//cfg.width = 900;
+		//cfg.height = 800;
 		new LwjglApplication(new ConnectFourGame(), cfg);
 	}
 }
